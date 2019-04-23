@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "195682890533",
+    "firebase_url": "https://requestchat-82266.firebaseio.com",
+    "project_id": "requestchat-82266",
+    "storage_bucket": "requestchat-82266.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195682890533:android:6e1d5db1e4a3cd67",
+        "android_client_info": {
+          "package_name": "com.ahmedteleb.requestchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195682890533-quci2i7nh39lefgoucr5g60lc2r8p0kc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedteleb.requestchat",
+            "certificate_hash": "94a38a2e0eed19876a6e856b2b70c63ed7f8ed73"
+          }
+        },
+        {
+          "client_id": "195682890533-rbfcg6bjr33u827ajamfi1o06e7h4lgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAExnl9GgzVtrbbxNCQhAnEwROqIWZ4nCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195682890533-rbfcg6bjr33u827ajamfi1o06e7h4lgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
