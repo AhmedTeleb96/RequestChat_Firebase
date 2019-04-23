@@ -13,7 +13,7 @@
      android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Login"
-     android:id="@+id/login_btn"
+     android:id="@+id/cLogin_btn"
     />
 
     <Button
@@ -21,6 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registration"
-        android:id="@+id/registration_btn"
+        android:id="@+id/cRegistration_btn"
         />
 </LinearLayout>

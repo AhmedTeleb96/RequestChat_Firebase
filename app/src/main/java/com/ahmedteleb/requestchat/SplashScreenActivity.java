@@ -24,6 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity
             Intent main_intent =new Intent(getApplication(),MainActivity.class);
             main_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(main_intent);
+            finish();
             return;
 
         }else
@@ -31,6 +32,7 @@ public class SplashScreenActivity extends AppCompatActivity
             Intent choose_intent =new Intent(getApplication(),ChooseLoginRegistrationActivity.class);
             choose_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(choose_intent);
+            finish();
             return;
         }
     }
