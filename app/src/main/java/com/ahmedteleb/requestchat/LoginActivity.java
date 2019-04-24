@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         email_et = findViewById(R.id.email_login);
         password_et = findViewById(R.id.password_login);
 
+        mAuth = FirebaseAuth.getInstance();
+
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -53,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = email_et.getText().toString();
                 final String password = password_et.getText().toString();
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener((Executor) getApplication(), new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful())
