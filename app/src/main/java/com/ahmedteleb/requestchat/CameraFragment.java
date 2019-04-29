@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
@@ -30,6 +31,9 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     SurfaceView surfaceView;
     SurfaceHolder surfaceHolder;
     final int CAMERA_REQUEST_CODE =1;
+    Camera.PictureCallback jpegCallback;
+
+
     public static CameraFragment getInstance_()
     {
         CameraFragment cameraFragment = new CameraFragment();
@@ -60,9 +64,32 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
             }
         });
 
+        Button capture_btn = view.findViewById(R.id.capture);
+        capture_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                captureImage();
+            }
+        });
+
+        jpegCallback = new Camera.PictureCallback() {
+            @Override
+            public void onPictureTaken(byte[] bytes, Camera camera) {
+
+                Intent intent =new Intent(getContext(),ShowCaptureActivity.class);
+                intent.putExtra("captured",bytes);
+                startActivity(intent);
+                return;
+            }
+        };
+
         return view;
     }
 
+    private void captureImage()
+    {
+        camera.takePicture(null,null,jpegCallback);
+    }
 
 
     @Override
@@ -72,6 +99,19 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
         camera.setDisplayOrientation(90);
         param.setPreviewFrameRate(30);
         param.setFlashMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+
+        Camera.Size bestSize=null;
+        List<Camera.Size> sizeList = camera.getParameters().getSupportedPreviewSizes();
+        bestSize=sizeList.get(0);
+        for (int i=1 ; i<sizeList.size() ; i++)
+        {
+            if((sizeList.get(i).width * sizeList.get(i).height) > (bestSize.width * bestSize.height))
+            {
+                bestSize = sizeList.get(i);
+            }
+        }
+        param.setPictureSize(bestSize.width,bestSize.height);
+
 
         camera.setParameters(param);
 

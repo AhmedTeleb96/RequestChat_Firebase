@@ -17,4 +17,11 @@
         android:text="logout"
         android:id="@+id/logout"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="capture"
+        android:id="@+id/capture"
+        android:layout_gravity="bottom"
+        />
 </FrameLayout>
