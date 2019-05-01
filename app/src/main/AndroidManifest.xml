@@ -14,11 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowCaptureActivity"></activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ChooseLoginRegistrationActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".FindUsersActivity"></activity>
+        <activity android:name=".ShowCaptureActivity" />
+        <activity android:name=".LoginRegistration.RegistrationActivity" />
+        <activity android:name=".LoginRegistration.LoginActivity" />
+        <activity android:name=".LoginRegistration.ChooseLoginRegistrationActivity" />
+        <activity android:name=".LoginRegistration.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,11 +1,12 @@
-package com.ahmedteleb.requestchat;
+package com.ahmedteleb.requestchat.LoginRegistration;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.ahmedteleb.requestchat.LoginRegistration.ChooseLoginRegistrationActivity;
+import com.ahmedteleb.requestchat.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreenActivity extends AppCompatActivity
@@ -21,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity
 
         if(mAuth.getCurrentUser() != null)
         {
-            Intent main_intent =new Intent(getApplication(),MainActivity.class);
+            Intent main_intent =new Intent(getApplication(), MainActivity.class);
             main_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(main_intent);
             finish();
@@ -29,7 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity
 
         }else
         {
-            Intent choose_intent =new Intent(getApplication(),ChooseLoginRegistrationActivity.class);
+            Intent choose_intent =new Intent(getApplication(), ChooseLoginRegistrationActivity.class);
             choose_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(choose_intent);
             finish();

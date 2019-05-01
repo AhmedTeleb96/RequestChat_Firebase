@@ -1,16 +1,12 @@
-package com.ahmedteleb.requestchat;
+package com.ahmedteleb.requestchat.Fragment;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.hardware.camera2.CameraDevice;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -20,6 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.ahmedteleb.requestchat.FindUsersActivity;
+import com.ahmedteleb.requestchat.R;
+import com.ahmedteleb.requestchat.ShowCaptureActivity;
+import com.ahmedteleb.requestchat.LoginRegistration.SplashScreenActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
@@ -50,7 +50,10 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
         if(ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
-           ActivityCompat.requestPermissions(getActivity(),new String[]{android.Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+
+          // requestPermissions(getActivity(),new String[]{android.Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+           requestPermissions(new String[]{android.Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+
         }else {
             surfaceHolder.addCallback(this);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -72,11 +75,19 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
             }
         });
 
+        Button findUsers_btn = view.findViewById(R.id.findUsers);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findUsers();
+            }
+        });
+
         jpegCallback = new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] bytes, Camera camera) {
 
-                Intent intent =new Intent(getContext(),ShowCaptureActivity.class);
+                Intent intent =new Intent(getContext(), ShowCaptureActivity.class);
                 intent.putExtra("captured",bytes);
                 startActivity(intent);
                 return;
@@ -85,6 +96,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
         return view;
     }
+
+
 
     private void captureImage()
     {
@@ -154,9 +167,16 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
         }
     }
 
+    private void findUsers()
+    {
+
+        Intent intent = new Intent(getContext(), FindUsersActivity.class);
+        startActivity(intent);
+        return;
+    }
     private void logout() {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getContext(),SplashScreenActivity.class);
+        Intent intent = new Intent(getContext(), SplashScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         return;
