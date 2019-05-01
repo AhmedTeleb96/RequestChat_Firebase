@@ -15,8 +15,8 @@ public class RCViewHolder extends RecyclerView.ViewHolder
     public RCViewHolder(View itemView)
     {
         super(itemView);
-        email=itemView.findViewById(R.id.email);
-        email=itemView.findViewById(R.id.follow_btn);
+        email  =itemView.findViewById(R.id.email);
+        follow =itemView.findViewById(R.id.follow_btn);
 
     }
 
