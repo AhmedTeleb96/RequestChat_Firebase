@@ -14,13 +14,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class RCadapter extends RecyclerView.Adapter<RCViewHolder>
+public class FollowAdapter extends RecyclerView.Adapter<FollowViewHolder>
 {
 
-    private List<UsersObject> usersList ;
+    private List<FollowObject> usersList ;
     private Context context;
 
-    public RCadapter(List<UsersObject> usersList, Context context)
+    public FollowAdapter(List<FollowObject> usersList, Context context)
     {
         this.usersList = usersList;
         this.context = context;
@@ -28,16 +28,16 @@ public class RCadapter extends RecyclerView.Adapter<RCViewHolder>
 
     @NonNull
     @Override
-    public RCViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FollowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_followers_item,null);
-        RCViewHolder rcv =new RCViewHolder(LayoutView);
+        FollowViewHolder rcv =new FollowViewHolder(LayoutView);
 
         return rcv;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RCViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FollowViewHolder holder, int position) {
 
         holder.email.setText(usersList.get(position).getEmail());
 

@@ -1,11 +1,11 @@
 package com.ahmedteleb.requestchat.RecycleViewFollow;
 
-public class UsersObject
+public class FollowObject
 {
     private  String email;
     private String uid;
 
-    public UsersObject(String email, String uid)
+    public FollowObject(String email, String uid)
     {
         this.email = email;
         this.uid = uid;

@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.ahmedteleb.requestchat.RecycleViewFollow.RCadapter;
-import com.ahmedteleb.requestchat.RecycleViewFollow.UsersObject;
+import com.ahmedteleb.requestchat.RecycleViewFollow.FollowAdapter;
+import com.ahmedteleb.requestchat.RecycleViewFollow.FollowObject;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FindUsersActivity extends AppCompatActivity {
 
@@ -46,7 +45,7 @@ public class FindUsersActivity extends AppCompatActivity {
 
         layoutManager= new LinearLayoutManager(getApplication());
         recyclerView.setLayoutManager(layoutManager);
-        adapter =new RCadapter(getDataSet(),getApplication());
+        adapter =new FollowAdapter(getDataSet(),getApplication());
         recyclerView.setAdapter(adapter);
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +74,8 @@ public class FindUsersActivity extends AppCompatActivity {
                 }
                 if(! email_.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()))
                 {
-                    UsersObject usersObject =new UsersObject(email_,uid);
-                    usersObjectArrayList.lastIndexOf(usersObject);
+                    FollowObject followObject =new FollowObject(email_,uid);
+                    followObjectArrayList.lastIndexOf(followObject);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -107,15 +106,15 @@ public class FindUsersActivity extends AppCompatActivity {
 
     private void clear()
     {
-        int size = this.usersObjectArrayList.size();
-        this.usersObjectArrayList.clear();
+        int size = this.followObjectArrayList.size();
+        this.followObjectArrayList.clear();
         adapter.notifyItemRangeChanged(0,size);
     }
 
-    private ArrayList<UsersObject> usersObjectArrayList =new ArrayList<>();
-    private ArrayList<UsersObject> getDataSet()
+    private ArrayList<FollowObject> followObjectArrayList =new ArrayList<>();
+    private ArrayList<FollowObject> getDataSet()
     {
         listenForData();
-        return usersObjectArrayList;
+        return followObjectArrayList;
     }
 }

@@ -1,4 +1,4 @@
-package com.ahmedteleb.requestchat.RecycleViewFollow;
+package com.ahmedteleb.requestchat.RecycleViewStory;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,16 +7,14 @@ import android.widget.TextView;
 
 import com.ahmedteleb.requestchat.R;
 
-public class RCViewHolder extends RecyclerView.ViewHolder
+public class StoryViewHolder extends RecyclerView.ViewHolder
 {
     public TextView email;
-    public Button follow;
 
-    public RCViewHolder(View itemView)
+    public StoryViewHolder(View itemView)
     {
         super(itemView);
         email  =itemView.findViewById(R.id.email);
-        follow =itemView.findViewById(R.id.follow_btn);
 
     }
 
