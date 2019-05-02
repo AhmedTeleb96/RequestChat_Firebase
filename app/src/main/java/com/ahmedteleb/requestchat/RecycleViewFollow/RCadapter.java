@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ahmedteleb.requestchat.R;
+import com.ahmedteleb.requestchat.UserInformation;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -34,13 +37,39 @@ public class RCadapter extends RecyclerView.Adapter<RCViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RCViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RCViewHolder holder, int position) {
 
         holder.email.setText(usersList.get(position).getEmail());
+
+        if(UserInformation.userFollowList.contains(usersList.get(holder.getLayoutPosition()).getUid()))
+        {
+            holder.follow.setText("following");
+
+        }else {
+
+            holder.follow.setText("follow");
+        }
+
+        holder.follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                if(!UserInformation.userFollowList.contains(usersList.get(holder.getLayoutPosition()).getUid())){
+                    holder.follow.setText("following");
+                    FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("following").child(usersList.get(holder.getLayoutPosition()).getUid()).setValue(true);
+                }else{
+                    holder.follow.setText("follow");
+                    FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("following").child(usersList.get(holder.getLayoutPosition()).getUid()).removeValue();
+                }
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.usersList.size();
     }
 }
