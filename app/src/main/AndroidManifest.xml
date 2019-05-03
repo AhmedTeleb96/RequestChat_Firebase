@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FindUsersActivity"></activity>
+        <activity android:name=".DisplayImageActivity"></activity>
+        <activity android:name=".FindUsersActivity" />
         <activity android:name=".ShowCaptureActivity" />
         <activity android:name=".LoginRegistration.RegistrationActivity" />
         <activity android:name=".LoginRegistration.LoginActivity" />
