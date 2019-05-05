@@ -1,4 +1,4 @@
-package com.ahmedteleb.requestchat.RecycleViewFollow;
+package com.ahmedteleb.requestchat.RecyclerViewFollow;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

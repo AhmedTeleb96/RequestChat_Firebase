@@ -1,5 +1,6 @@
 package com.ahmedteleb.requestchat;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -54,66 +55,19 @@ public class ShowCaptureActivity extends AppCompatActivity {
 
 
         Uid = FirebaseAuth.getInstance().getUid();
-        Button saveStory_btn = findViewById(R.id.saveStory);
-        saveStory_btn.setOnClickListener(new View.OnClickListener() {
+        Button sendImage_btn = findViewById(R.id.send);
+        sendImage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                saveToStories();
+                Intent intent =new Intent(getApplicationContext(),ChooseReceiverActivity.class);
+                startActivity(intent);
+                return;
             }
         });
     }
 
-    private void saveToStories()
-    {
-        final DatabaseReference userStoryDB = FirebaseDatabase.getInstance().getReference().child("users").child(Uid).child("story");
-        final String key = userStoryDB.push().getKey();
-        final StorageReference filepath = FirebaseStorage.getInstance().getReference().child("captures").child(key);
 
-        ByteArrayOutputStream baos =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,20,baos);
-        byte[] imageToUpload = baos.toByteArray();
-        UploadTask uploadTask= filepath.putBytes(imageToUpload);
-
-        Task<Uri>  uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-
-                return filepath.getDownloadUrl();
-            }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-
-                Uri imageUrl = task.getResult();
-
-                long currentTimeStamp = System.currentTimeMillis();
-                long endTimeStamp = System.currentTimeMillis() + (24*60*60*1000);
-
-                Map<String,Object> mapToUpload = new HashMap<>();
-                mapToUpload.put("imageurl",imageUrl.toString());
-                mapToUpload.put("timeStampBegin",currentTimeStamp);
-                mapToUpload.put("timeStampEnd",endTimeStamp);
-
-                userStoryDB.child(key).setValue(mapToUpload);
-
-
-                finish();
-                return;
-            }
-        });
-
-
-
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                finish();
-                return;
-            }
-        });
-
-    }
 
 
 }

@@ -1,4 +1,4 @@
-package com.ahmedteleb.requestchat.RecycleViewStory;
+package com.ahmedteleb.requestchat.RecyclerViewStory;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ahmedteleb.requestchat.R;
-import com.ahmedteleb.requestchat.UserInformation;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -30,7 +27,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryViewHolder>
     @Override
     public StoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.receycleview_story_item,null);
+        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_story_item,null);
         StoryViewHolder rcv =new StoryViewHolder(LayoutView);
 
         return rcv;

@@ -1,4 +1,4 @@
-package com.ahmedteleb.requestchat.RecycleViewFollow;
+package com.ahmedteleb.requestchat.RecyclerViewFollow;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -30,7 +30,7 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowViewHolder>
     @Override
     public FollowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_followers_item,null);
+        View LayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_followers_item,null);
         FollowViewHolder rcv =new FollowViewHolder(LayoutView);
 
         return rcv;

@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.ahmedteleb.requestchat.RecycleViewFollow.FollowAdapter;
-import com.ahmedteleb.requestchat.RecycleViewFollow.FollowObject;
+import com.ahmedteleb.requestchat.RecyclerViewFollow.FollowAdapter;
+import com.ahmedteleb.requestchat.RecyclerViewFollow.FollowObject;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -75,7 +75,7 @@ public class FindUsersActivity extends AppCompatActivity {
                 if(! email_.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()))
                 {
                     FollowObject followObject =new FollowObject(email_,uid);
-                    followObjectArrayList.lastIndexOf(followObject);
+                    followObjectArrayList.add(followObject);
                     adapter.notifyDataSetChanged();
                 }
             }

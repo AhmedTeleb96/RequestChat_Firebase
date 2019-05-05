@@ -1,4 +1,4 @@
-package com.ahmedteleb.requestchat.RecycleViewFollow;
+package com.ahmedteleb.requestchat.RecyclerViewFollow;
 
 public class FollowObject
 {

@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="save to stories"
-        android:id="@+id/saveStory"
+        android:text="Send Image"
+        android:id="@+id/send"
         />
 
 </FrameLayout>

@@ -1,4 +1,4 @@
-package com.ahmedteleb.requestchat.RecycleViewStory;
+package com.ahmedteleb.requestchat.RecyclerViewStory;
 
 public class StoryObject
 {

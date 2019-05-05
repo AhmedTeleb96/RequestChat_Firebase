@@ -12,9 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.ahmedteleb.requestchat.R;
-import com.ahmedteleb.requestchat.RecycleViewStory.StoryViewHolder;
-import com.ahmedteleb.requestchat.RecycleViewStory.StoryAdapter;
-import com.ahmedteleb.requestchat.RecycleViewStory.StoryObject;
+import com.ahmedteleb.requestchat.RecyclerViewStory.StoryAdapter;
+import com.ahmedteleb.requestchat.RecyclerViewStory.StoryObject;
 import com.ahmedteleb.requestchat.UserInformation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
