@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class DisplayImageActivity extends AppCompatActivity {
 
-    String userId;
+    String userId , chatOrStory , currentUid;
     private ImageView imageView;
     private boolean started = false;
 
@@ -28,16 +29,55 @@ public class DisplayImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_image);
 
+        currentUid = FirebaseAuth.getInstance().getUid();
+
         Bundle bundle = getIntent().getExtras();
         userId = bundle.getString("userId");
+        chatOrStory = bundle.getString("chatOrStory");
+
         imageView = findViewById(R.id.image);
 
-        listenForData();
+        switch(chatOrStory){
+            case "chat":
+                listenForChat();
+                break;
+            case "story":
+                listenForStory();
+                break;
+        }
+
+    }
+
+    private void listenForChat()
+    {
+        final DatabaseReference chatDB = FirebaseDatabase.getInstance().getReference().child("users").child(currentUid).child("received").child(userId);
+        chatDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String imageUrl = "";
+                for(DataSnapshot chatSnapshot : dataSnapshot.getChildren()){
+
+                    if(chatSnapshot.child("imageUrl").getValue() != null){
+                        imageUrl = chatSnapshot.child("imageUrl").getValue().toString();
+                    }
+                    imageUrlArrayList.add(imageUrl);
+                    if (!started){
+                        started = true;
+                        InitializeDisplay();
+                    }
+                    chatDB.child(chatSnapshot.getKey()).removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
 
     }
 
     private ArrayList<String> imageUrlArrayList = new ArrayList<>();
-    private void listenForData()
+    private void listenForStory()
     {
 
             DatabaseReference listFollowingDB = FirebaseDatabase.getInstance().getReference().child("users").child(userId);

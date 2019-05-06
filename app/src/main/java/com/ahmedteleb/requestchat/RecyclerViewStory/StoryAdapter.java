@@ -38,7 +38,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryViewHolder>
 
         holder.email.setText(usersList.get(position).getEmail());
         holder.email.setTag(usersList.get(position).getUid());
-
+        holder.layout.setTag(usersList.get(position).getCharOrStory());
 
     }
 
