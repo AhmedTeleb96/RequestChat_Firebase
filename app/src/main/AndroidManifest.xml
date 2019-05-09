@@ -14,21 +14,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChooseReceiverActivity"></activity>
-        <activity android:name=".DisplayImageActivity" />
-        <activity android:name=".FindUsersActivity" />
-        <activity android:name=".ShowCaptureActivity" />
-        <activity android:name=".LoginRegistration.RegistrationActivity" />
-        <activity android:name=".LoginRegistration.LoginActivity" />
-        <activity android:name=".LoginRegistration.ChooseLoginRegistrationActivity" />
-        <activity android:name=".LoginRegistration.SplashScreenActivity">
+        <activity android:name=".ChooseReceiverActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".DisplayImageActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".FindUsersActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".ShowCaptureActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".LoginRegistration.RegistrationActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".LoginRegistration.LoginActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".LoginRegistration.ChooseLoginRegistrationActivity"
+            android:theme="@style/FullScreenTheme"
+            />
+        <activity android:name=".LoginRegistration.SplashScreenActivity"
+            android:theme="@style/FullScreenTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/FullScreenTheme"
+            />
     </application>
 
 </manifest>

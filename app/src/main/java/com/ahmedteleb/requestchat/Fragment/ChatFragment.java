@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,7 @@ public class ChatFragment extends Fragment
         adapter = new StoryAdapter(getDataSet(),getContext());
         recyclerView.setAdapter(adapter);
 
-        uid = FirebaseAuth.getInstance().getUid();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Button resfresh = view.findViewById(R.id.resfresh);
         resfresh.setOnClickListener(new View.OnClickListener() {
@@ -80,22 +81,27 @@ public class ChatFragment extends Fragment
     }
 
     private void listenForData(){
-        DatabaseReference receivedDb = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("received");
-        receivedDb.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        getUserInfo(snapshot.getKey());
+        if(uid != null) {
+            DatabaseReference receivedDb = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("received");
+            receivedDb.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            getUserInfo(snapshot.getKey());
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
+        else {
+            Log.i("usernull","user id is null");
+        }
     }
 
     private void getUserInfo(String chatUid) {

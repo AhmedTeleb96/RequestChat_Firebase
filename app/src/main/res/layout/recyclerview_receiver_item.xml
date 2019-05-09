@@ -10,9 +10,10 @@
         android:id="@+id/email"
         android:padding="20dp"
         android:textSize="14dp"
+        android:text="receiver"
         />
 
-    <view
+    <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"

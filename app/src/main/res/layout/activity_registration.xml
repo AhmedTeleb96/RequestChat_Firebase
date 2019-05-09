@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/name_register"
-        android:hint="Email"
+        android:hint="Name"
         />
     <EditText
         android:layout_width="match_parent"
