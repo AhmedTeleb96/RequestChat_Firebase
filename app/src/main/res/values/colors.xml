@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bg_blue">#4589f7</color>
+    <color name="bg_foshia">#f43558</color>
+    <color name="bg_light_green">#8fd872</color>
+
 </resources>

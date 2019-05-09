@@ -82,7 +82,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
         });
 
         Button findUsers_btn = view.findViewById(R.id.findUsers);
-        logout.setOnClickListener(new View.OnClickListener() {
+        findUsers_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 findUsers();
