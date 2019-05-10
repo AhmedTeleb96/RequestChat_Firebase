@@ -1,5 +1,7 @@
 package com.ahmedteleb.requestchat;
 
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         final int bg_foshia = ContextCompat.getColor(this,R.color.bg_foshia);
         final int bg_green = ContextCompat.getColor(this,R.color.bg_light_green);
 
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         bachground.setBackgroundColor(bg_green);
                         bachground.setAlpha(1-positionOffset);
 
-                    case 2:
+                    case 1:
                         bachground.setBackgroundColor(bg_blue);
                         bachground.setAlpha(positionOffset);
 
@@ -88,6 +93,23 @@ public class MainActivity extends AppCompatActivity {
                     return StoryFragment.getInstance_();
             }
             return null;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position){
+
+                case 0:
+                    return "Chat";
+
+                case 1:
+                    return "Camera";
+
+                case 2:
+                    return "Story";
+            }
+            return super.getPageTitle(position);
         }
 
         @Override
