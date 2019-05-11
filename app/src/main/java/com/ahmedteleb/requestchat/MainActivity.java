@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         final int bg_foshia = ContextCompat.getColor(this,R.color.bg_foshia);
         final int bg_green = ContextCompat.getColor(this,R.color.bg_light_green);
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -48,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (position)
                 {
                     case 0:
-                        bachground.setBackgroundColor(bg_green);
                         bachground.setAlpha(1-positionOffset);
+                        bachground.setBackgroundColor(bg_green);
 
                     case 1:
                         bachground.setBackgroundColor(bg_blue);

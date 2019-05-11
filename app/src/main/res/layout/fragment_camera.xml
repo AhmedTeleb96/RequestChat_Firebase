@@ -38,4 +38,5 @@
         android:id="@+id/capture"
         android:layout_gravity="bottom"
         />
+
 </FrameLayout>
