@@ -14,6 +14,7 @@ import android.view.View;
 import com.ahmedteleb.requestchat.Fragment.CameraFragment;
 import com.ahmedteleb.requestchat.Fragment.ChatFragment;
 import com.ahmedteleb.requestchat.Fragment.StoryFragment;
+import com.ahmedteleb.requestchat.View.SnapTabsView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentPagerAdapter = new myViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentPagerAdapter);
         viewPager.setCurrentItem(1);
+//
+//        SnapTabsView snapTabsView = findViewById(R.id.snap_tabs);
+//        snapTabsView.setUpWithViewPager(viewPager);
 
         final View bachground = findViewById(R.id.bg_color);
         final int bg_blue = ContextCompat.getColor(this,R.color.bg_blue);
@@ -43,22 +47,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                switch (position)
-                {
-                    case 0:
-                        bachground.setAlpha(1-positionOffset);
-                        bachground.setBackgroundColor(bg_green);
 
-                    case 1:
-                        bachground.setBackgroundColor(bg_blue);
-                        bachground.setAlpha(positionOffset);
-
-                }
             }
 
             @Override
             public void onPageSelected(int position) {
 
+                switch (position)
+                {
+                    case 0:
+                        // bachground.setAlpha(1-positionOffset);
+                        bachground.setBackgroundColor(bg_green);
+
+                    case 1:
+                        bachground.setBackgroundColor(bg_green);
+                        //bachground.setAlpha(positionOffset);
+
+                    case 2:
+                        bachground.setBackgroundColor(bg_blue);
+                        //bachground.setAlpha(positionOffset);
+                }
             }
 
             @Override

@@ -4,7 +4,6 @@
     android:layout_height="184dp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:layout_gravity="bottom"
-    android:background="@color/bg_foshia"
     >
 
 <ImageView
@@ -49,7 +48,7 @@
         android:layout_height="4dp"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="44dp"
-        android:src="@drawable/indicator_background"
+        android:background="@drawable/indicator_background"
         />
 
 </FrameLayout>

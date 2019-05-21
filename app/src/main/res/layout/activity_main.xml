@@ -23,13 +23,6 @@
 
     </android.support.v4.view.ViewPager>
 
-    <com.ahmedteleb.requestchat.View.SnapTabsView
-        android:id="@+id/snap_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
 
-    </com.ahmedteleb.requestchat.View.SnapTabsView>
 
 </RelativeLayout>

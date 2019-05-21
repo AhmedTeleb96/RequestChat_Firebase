@@ -12,18 +12,23 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ahmedteleb.requestchat.FindUsersActivity;
+import com.ahmedteleb.requestchat.MainActivity;
 import com.ahmedteleb.requestchat.R;
 import com.ahmedteleb.requestchat.ShowCaptureActivity;
 import com.ahmedteleb.requestchat.LoginRegistration.SplashScreenActivity;
+import com.ahmedteleb.requestchat.View.SnapTabsView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.ByteArrayOutputStream;
@@ -38,8 +43,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     SurfaceHolder surfaceHolder;
     final int CAMERA_REQUEST_CODE =1;
     Camera.PictureCallback jpegCallback;
-
-
+    private ImageView capture_btn;
+    private SnapTabsView snapTabsView;
     public static CameraFragment getInstance_()
     {
         CameraFragment cameraFragment = new CameraFragment();
@@ -73,13 +78,20 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
             }
         });
 
-        Button capture_btn = view.findViewById(R.id.capture);
+        snapTabsView = view.findViewById(R.id.snap_tabs);
+        capture_btn = snapTabsView.findViewById(R.id.viewSnap_center_image);
+        if(capture_btn == null) Log.e("error : ","capture btn is null");
         capture_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 captureImage();
             }
         });
+
+        ViewPager viewPager = getActivity().findViewById(R.id.viewpager);
+        SnapTabsView snapTabsView = view.findViewById(R.id.snap_tabs);
+        snapTabsView.setUpWithViewPager(viewPager);
 
         Button findUsers_btn = view.findViewById(R.id.findUsers);
         findUsers_btn.setOnClickListener(new View.OnClickListener() {
